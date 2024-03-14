@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Tickets</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+        .navbar {
+            background-color: #f8f9fa; /* Light gray background */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Shadow effect */
+            overflow: hidden;
+            height: 70px;
+            background-size: contain;
+        }
+
+        .navbar a {
+            float:left;
+            display: block;
+            color: #333; /* Dark gray text color */
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            justify-content: center; /* Horizontally center the image */
+            align-items: center;
+            position:fixed;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd; /* Light gray background on hover */
+            color: #555; /* Slightly darker text color on hover */
+        }
+
+        /* Center align navbar links on smaller screens */
+        @media screen and (max-width: 600px) {
+            .navbar a {
+                float: none;
+                display: block;
+                text-align: center;
+            }
+        }
+
+        #img1 {
+            max-width: 70%; /* Set maximum width to 100% of the container */
+            max-height: 70%; /* Set maximum height to 100% of the container */
+            display: block; /* Ensures the image behaves as a block element */
+            margin: auto; /* Centers the image horizontally */
+            float:left;
+            cursor: pointer; /* Add cursor pointer */
+        }
+
+        #img2 {
+            max-width: 70%; /* Set maximum width to 100% of the container */
+            max-height: 70%; /* Set maximum height to 100% of the container */
+            display: block; /* Ensures the image behaves as a block element */
+            margin: auto; /* Centers the image horizontally */
+            float:right;
+            cursor: pointer; /* Add cursor pointer */
+        }
+
+        #bi {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background-image: url('Screenshot (219).png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .overlay {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #play,
+        #reg {
+            margin: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #play:hover,
+        #reg:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        button {
+            display: inline-block;
+            padding: 20px 30px;
+            font-size: 20px;
+            color: #fff;
+            text-decoration: none;
+            background: linear-gradient(45deg, #4CAF50, #2E862A);
+            border: none;
+            border-radius: 70%;
+            box-shadow: 0 4px #2E862A;
+            transition: all 0.3s ease;
+        }
+
+
+        button:active {
+            box-shadow: 0 2px #2E862A;
+            transform: translateY(2px);
+        }
+
+        #p1 {
+            color:black;
+            font-weight:bold;
+            font-size:20px;
+        }
+
+        .popup {
+            display: none; /* Hide the popup by default */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #FFB7CF;
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            z-index: 9999;
+            height:500px;
+            width:300px;
+        }
+
+        /* Styles for the close button */
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            color: white;
+            height:15px;
+            width:15px;
+        }
+        p{
+            font-size:25px;
+
+        }
+
+        i{
+            color:black;
+            display:block;
+            font-size:30px;
+            
+            
+        }
+        h2{
+            font-style:'Stencil Std','fantasy  profile';
+        }
+        .profile-img {
+            background:url('./profile-user.png');
+            height:70px;
+            width:65px;
+            border-radius: 50%; /* Make it circular */
+            overflow: hidden; /* Hide any overflow */
+            margin-bottom: 10px;
+            display: flex; /* Use flexbox */
+            align-items: center; 
+
+        }
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            
+    margin-right: 10px;
+        }
+        #pf {
+            position: absolute;
+            display: inline-block; /* Change display to inline-block */
+            background-color: white;
+            color: black;
+            border-radius: 15px;
+            height: auto;
+            padding: 5px 10px;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        
+        #pw{
+            height:25px;
+            width:25px;
+        }
+        .container {
+            display: flex; /* Use flexbox */
+            align-items: center; /* Vertically center the items */
+        }
+        
+        .container img {
+            width: 30px; /* Set the width of the image */
+            height: auto; /* Maintain aspect ratio */
+            margin-right: 5px; /* Add space between the image and text */
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <img src="./profile-user.png" id="img1" alt="profile" onclick="openPopup()">
+        <!-- Add an ID to the settings image for easy targeting -->
+        <img src='settings (1).png' id='img2' alt="settings" >
+    </div>
+    <div id="bi">
+        <div class='overlay'>
+            <button id='play'>PLAY AS GUEST</button>
+            <p id='p1'>OR</p>
+            <button id='reg'>REGISTER</button>
+        </div>
+    </div>
+
+    <!-- Popup content -->
+    <div id="popup" class="popup">
+        <span class="close" onclick="closePopup()">&times;</span>
+        <div class="profile-img">
+            <img src="./profile-user.png" alt="Profile Image">
+            <p>Name</p>
+            
+        </div>
+        <hr>
+        <p>High Score</p>
+        <p>Wins <i class="fa fa-thumbs-up"></i></p>
+        <p>Loss <i class="fa fa-thumbs-down"></i></p>
+        <div id='pf'>
+            <p>Edit Profile</p>
+        </div>
+        
+        <div class="container">
+            <img src="power.png" id="pw" alt="power">
+            <p style="color:black">Log Out</p>
+        </div>
+        
+    </div>
+
+    <script>
+        // Function to open the popup
+        function openPopup() {
+            document.getElementById("popup").style.display = "block";
+        }
+
+        // Function to close the popup
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+        }
+        function redirectToPage2() {
+            setTimeout(function() {
+                window.location.href = "half.html"; // Redirect to page2.html
+            }, 5000); // 10 seconds (10,000 milliseconds)
+        }
+        // Call the function when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            var playButton = document.getElementById('play');
+            var registerButton = document.getElementById('reg');
+
+            playButton.addEventListener('click', redirectToPage2);
+            registerButton.addEventListener('click', redirectToPage2);
+        }); 
+     
+</script>
+</body>
+</html>

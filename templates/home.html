@@ -1,0 +1,23 @@
+{%extends 'base.html' %}
+{%load static%}
+
+{%block content%}
+<h1>hii {{name}}</h1>
+<form action="{% url 'calc:add' %}" method='get' >
+    {% csrf_token %}
+    enter first no:<input type='text' name='num1'/><br>
+enter 2nd no<input type='text' name='num2'/><br>
+<input type='submit'/>
+</form>
+
+{% if result%}
+<p>Result:{{result}}</p>
+{%endif%}
+<form action="{% url 'calc:stri' %}"method='get' >
+
+<textarea name='count' col=100 row=20></textarea><br>
+<input type='submit'/>
+</form>
+<h1>no of words:{{amount}}</h1>
+
+{%endblock%}

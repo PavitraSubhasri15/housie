@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Add necessary meta tags, title, and link to CSS -->
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Tickets</title>
+    <link rel="stylesheet" href="{% static 'styleopen.css' %}">
+</head>
+<body>
+    <!-- Content remains the same -->
+    <div class="container" style="position:relative" onclick="redirectToPage2()">
+        <img src="{% static 'housie.png' %}" id='op1' alt='op'>
+        <div id="loadingMessage" style="display:none;">
+            <p>Loading</p>
+        </div>
+        <div class="loading-dots" id="loadingAnimation" style="display:none;">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <!-- Use onclick attribute to handle the button click -->
+    </div>
+    
+    <script> 
+        // Function to handle the button click event
+        function redirectToPage2() {
+            // Show loading message or animation
+            document.getElementById('loadingMessage').style.display = 'block';
+            document.getElementById('loadingAnimation').style.display = 'block';
+    
+            // Delay the redirection using setTimeout
+            setTimeout(function() {
+                window.location.href = "{% url 'minidjango:c2' %}";
+            }, 5000); // 5 seconds (5000 milliseconds)
+        }
+    </script>
+    
+</body>
+</html>

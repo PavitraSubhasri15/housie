@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Tickets</title>
+    <link rel="stylesheet" href="{% static 'styleminipro2.css' %}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+</head>
+<body style="background-image: url('{% static 'Screenshot (219).png' %}'); background-size: cover; background-repeat: no-repeat;">
+    <!-- Content remains the same -->
+    <div class="blur-background"></div>
+    <div class="navbar">
+        <div class="c1">
+        <img src="{% static 'home (1).png' %}" id="home"  onclick="quitopenPopup()" alt="home">
+        <p id="settingsText">Home</p>
+        </div>
+        <div class="c1">
+        <img src="{% static 'profile-user.png' %}" id="img1" alt="profile" onclick="openPopup()">
+        <p id="settingsText">Profile</p>
+    </div>
+        <div class="c1">
+        <img src="{% static 'settings (1).png' %}" id="img2" alt="settings" onclick="setopenPopup()">
+        <p id="settingsText">Settings</p>
+        </div>
+    <a href="{% url 'minidjango:open' %}">
+
+        <img src="{% static 'back.png' %}" style="position: absolute; height: 35px; width: 35px; cursor: pointer;top:80px;left:10px;"  alt="Back">
+    </a>
+    <div id="i">
+        <div class='overlay'>
+            <button id='play' onclick="window.location.href = '{% url 'minidjango:login' %}?action=redirectToPage3';">PLAY AS GUEST</button>
+            <p id='p1'>OR</p>
+            <form method="get" action="{% url 'minidjango:register' %}">
+                <button type="submit" id="reg" onclick="openPopup2()">Register</button>
+            </form>            
+            <p id='p1'>OR</p>
+            <button id="log"  onclick="openPopup3()">Login</button>
+            
+        </div>
+    </div>
+    <!-- Popup content -->
+    <div class="fullcontainer">
+    <div class="quitpopup" id="quitpopup">
+        <div class="profile-info">
+            <h2>Are you sure you want to quit?</h2>
+            </div>
+            <hr>
+            <button id="cancel" onclick="quitclosePopup()">Cancel</button>
+                    <span><a href="{% url 'minidjango:open' %}">
+                        <button id="quit" style="font-family: Arial, Helvetica, sans-serif;">Quit</button>
+                    </a></span>
+    
+        </div>
+    <div id="popup" class="popup">
+        <span class="close" onclick="closePopup()">&times;</span>
+        <div class="overlay"></div>
+        <div class="profile-info">
+
+            <div class="profile-img">
+                <img src="{% static 'profile-user.png' %}" alt="Profile Image">
+            </div>
+            <p id="nameDisplay"></p>
+            <span style="font-size:30px" id="profile-name"></span>
+        </div>
+        <hr>
+        <p style="font-size:30px">High Score</p>
+        <div style="display: flex;justify-content: space-around;">
+            <p style="font-size:30px">Wins <img src="{% static 'thumbs-up-hand-symbol.png' %}" id='winloss' style="height:50px;width:50px"> </p>
+            <p style="font-size:30px">Loss <img src="{% static 'thumbs-down-silhouette.png' %}" id='winloss' style="height:50px;width:50px"> </p>
+        </div>
+        <button style="display: flex; align-items: center; justify-content: center; background-color: white; border-radius: 25px; min-height: 30px; max-width: 180px; color: black; text-align: center; font-size: 25px;">
+            Log Out
+            <span style="margin-left: 5px;"><img style="width: 30px; height: 30px;" src="{% static 'power.png' %}"></span>        <button style="display:block;background-color:white;border-radius:25px;min-height:30px;max-width:180px;color:black;top:50%;text-align:center;font-size:25px;float:right;">Edit Profile</button>
+    </div>
+    <div class="setpopup" id="setpopup">
+        <span class="close1" onclick="setclosePopup()">&times;</span>
+        <div class="profile-info">
+            <p style="font-size:30px" class="profile-name">Settings</p>
+        </div>
+        <hr>
+        <div style="display: flex; flex-direction: column; align-items: center;">
+            <p style="margin: 0;">
+                <img src="{% static 'left-arrow.png' %}" style="height: 20px; width: 20px;" id="leftarrow" onclick="changeLevel('prev')"> 
+                <span id="levelDisplay" style="color: black; font-size: 25px; font-weight: bold;"></span> <!-- Use a span to display the level -->
+                <img src="{% static 'right-arrow.png' %}" style="height: 20px; width: 20px;" id="rightarrow" onclick="changeLevel('next')">
+            </p>
+            <br>
+            <button style="background-color: white; border-radius: 25px; min-height: 30px; max-width: 180px; color: black; text-align: center; font-size: 25px; margin-bottom: 10px;">Game rules</button>
+            <br>
+            <img src="{% static 'mute.png' %}" id="image" style="height: 35px; width: 35px;" alt="Play Audio">
+        </div>
+        <img src="{% static 'mute.png' %}" id="image" style="height:35px;width:35px;" alt="Play Audio">
+        
+           
+</audio>
+
+    </div>
+</div>
+    {% block content%}
+    {%endblock%}
+   
+<script>
+    // Function to open the popup
+function redirect(){
+        window.location.href = "{% url 'minidjango:half1' %}";
+
+
+
+}
+
+// JavaScript function to close the popu
+function openPopup() {
+    var popup = document.getElementById("popup");
+    popup.style.display = "block";
+    // Add blur effect to background elements
+    var elementsToBlur = document.querySelectorAll("body > *:not(#popup)");
+    elementsToBlur.forEach(function(element) {
+        element.classList.add("blur-background");
+    });
+}
+function openPopup2() {
+    var popup = document.getElementById("popup2");
+    popup.style.display = "block";
+    // Add blur effect to background elements
+    var elementsToBlur = document.querySelectorAll("body > *:not(#popup2)");
+    elementsToBlur.forEach(function(element) {
+        element.classList.add("blur-background");
+    });
+}
+function openPopup3() {
+    var popup = document.getElementById("popup3");
+    popup.style.display = "block";
+    // Add blur effect to background elements
+    var elementsToBlur = document.querySelectorAll("body > *:not(#popup3)");
+    elementsToBlur.forEach(function(element) {
+        element.classList.add("blur-background");
+    });
+}
+
+// Function to close the popup
+function closePopup() {
+    var popup = document.getElementById("popup");
+    popup.style.display = "none";
+    // Remove blur effect from background elements
+    var elementsToBlur = document.querySelectorAll("body > *:not(#popup)");
+    elementsToBlur.forEach(function(element) {
+        element.classList.remove("blur-background");
+    });
+}
+
+// Function to open the quit popup
+// Function to open the quit popup
+function quitopenPopup() {
+    var quitpopup = document.getElementById("quitpopup");
+    quitpopup.style.display = "block";
+    // Add blur effect to background elements except quitpopup
+    var elementsToBlur = document.querySelectorAll("body > *:not(#quitpopup)");
+    elementsToBlur.forEach(function(element) {
+        element.classList.add("blur-background");
+    });
+}
+
+// Function to close the quit popup
+function quitclosePopup() {
+    var quitpopup = document.getElementById("quitpopup");
+    quitpopup.style.display = "none";
+    // Remove blur effect from background elements
+    var elementsToBlur = document.querySelectorAll("body > *:not(#quitpopup)");
+    elementsToBlur.forEach(function(element) {
+        element.classList.remove("blur-background");
+    });
+}
+
+
+// Function to open the settings popup
+function setopenPopup() {
+    var setpopup = document.getElementById("setpopup");
+    setpopup.style.display = "block";
+    // Add blur effect to background elements
+    var elementsToBlur = document.querySelectorAll("body > *:not(#setpopup)");
+    elementsToBlur.forEach(function(element) {
+        element.classList.add("blur-background");
+    });
+}
+
+// Function to close the settings popup
+function setclosePopup() {
+    var setpopup = document.getElementById("setpopup");
+    setpopup.style.display = "none";
+    // Remove blur effect from background elements
+    var elementsToBlur = document.querySelectorAll("body > *:not(#setpopup)");
+    elementsToBlur.forEach(function(element) {
+        element.classList.remove("blur-background");
+    });
+}
+
+// Function to open the quit popup
+
+// Function to toggle password visibility
+function togglePasswordVisibility(passwordId) {
+    const passwordInput = document.getElementById(passwordId);
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+    } else {
+        passwordInput.type = 'password';
+    }
+}
+
+// Function to edit profile
+function editProfile() {
+    var profileName = document.getElementById("profileName");
+    var newName = prompt("Enter your new name:");
+    if (newName !== null && newName.trim() !== "") {
+        profileName.textContent = newName;
+    }
+}
+
+function togglePasswordVisibility(passwordId) {
+    const passwordInput = document.getElementById(passwordId);
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+    } else {
+        passwordInput.type = 'password';
+    }
+}
+// Other functions remain unchanged
+
+function setGuestName(name) {
+    const nameElement = document.getElementById('nameDisplay');
+    
+    nameElement.textContent = name;
+}
+
+
+document.getElementById('image').addEventListener('click', function() {
+    var audio = document.getElementById('audio');
+    if (audio.paused) {
+        document.getElementById('image').src = './volume.png';
+      audio.play();
+    } else {
+        document.getElementById('image').src ='./mute.png';
+      audio.pause();
+      audio.currentTime = 0; // Reset audio to the beginning
+    }
+  });
+
+
+</script>
+
+</body>
+</html>

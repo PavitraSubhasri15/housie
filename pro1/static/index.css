@@ -1,0 +1,30 @@
+/* Contents of index.css */
+
+.container {
+    display: flex;
+    justify-content: space-around; /* or use 'space-between' for more spacing */
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+}
+
+.box {
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1; /* Allow items to grow and take up available space equally */
+    max-width: 30%; /* Set a maximum width to prevent items from growing too wide */
+    height: 250px;
+    margin: 10px;
+    padding: 2px;
+    border-radius: 10px;
+}
+
+img {
+    width: 100%; /* Make the image fill the container width */
+    height: auto; /* Maintain the aspect ratio */
+    border: 2px solid black;
+}
+
+h3 {
+    color: aquamarine;
+}

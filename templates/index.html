@@ -1,0 +1,23 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page Title</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'index.css' %}">
+    <!-- Additional meta tags, stylesheets, or scripts can go here -->
+</head>
+<body>
+  <div class='container'>
+    <h1>hiii</h1>
+    {%for dest in name%}
+    <div class='box'>
+<img src={{dest.img}} />
+  <h3>{{dest.name}}</h3>
+    </div>
+    {%endfor%}
+  </div>
+</body>
+</html>

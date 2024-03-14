@@ -1,0 +1,736 @@
+body {
+    background: #90A4AE;
+    font-size: 40px;
+    color: white;
+    font-family: sans-serif;
+  }
+
+  .text-animation {
+    position: absolute;
+    margin-left: 440px;
+    top: 55px;
+    font-size: 45px;
+    animation: rubberBand 1.5s ease-in-out 0s forwards;
+  }
+
+/*     rubberBand animation credits => daneden "Animation.css" */
+  @keyframes rubberBand {
+    from {
+      transform: scale3d(1, 1, 1);
+    }
+    30% {
+      transform: scale3d(1.25, 0.75, 1);
+    }
+    40% {
+      transform: scale3d(0.75, 1.25, 1);
+    }
+    50% {
+      transform: scale3d(1.15, 0.85, 1);
+    }
+    65% {
+      transform: scale3d(.95, 1.05, 1);
+    }
+    75% {
+      transform: scale3d(1.05, .95, 1);
+    }
+    to {
+      transform: scale3d(1, 1, 1);
+      opacity: 0;
+    }
+  }
+
+  .main-div {
+    margin-left: -200px;
+  }
+
+  .podium {
+    margin: 470px 0px 0px 650px;
+    position: absolute;
+  }
+
+  .box-1 {
+    position: absolute;
+    display: inline-block;
+    height: 110px;
+    width: 190px;
+    right: 190px;
+    bottom: 0px;
+    background: #403845;
+    border-top: 10px solid white;
+  }
+
+  .box-2 {
+    display: inline-block;
+    height: 200px;
+    width: 190px;
+    background: #403845;
+    border-top: 10px solid white;
+  }
+
+  .box-3 {
+    position: absolute;
+    display: inline-block;
+    height: 130px;
+    width: 190px;
+    bottom: 0px;
+    left: 190px;
+    background: #403845;
+    border-top: 10px solid white;
+  }
+
+  .pos-1 {
+    position: relative;
+    top: 30px;
+  }
+
+  .pos-2 {
+    position: relative;
+    top: 30px;
+  }
+
+  .pos-3 {
+    position: relative;
+    top: 40px;
+  }
+
+  .face {
+    height: 70px;
+    width: 70px;
+    border-radius: 100%;
+    background: #4E3025;
+  }
+
+  .winner {
+    position: absolute;
+    height: 330px;
+    width: 150px;
+    margin-top: -390px;
+    margin-left: 25px;
+    transition: transform 1s ease 0s;
+  }
+
+  .shirt {
+    height: 120px;
+    width: 90px;
+    margin-top: 2px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background: #E64A19;
+  }
+
+  .winner:hover {
+    cursor: pointer;
+    transform: translateY(-50px);
+    transform:  anim-leg-2;
+  }
+
+  .hand-1 {
+    height: 40px;
+    width: 30px;
+    position: relative;
+    top: 15px;
+    right: 65px;
+    background: #E64A19;
+    border-radius: 40px;
+    border-bottom: 60px solid #4E3025;
+    animation: 600ms 0s;
+  }
+
+  .hand-2 {
+    height: 40px;
+    width: 30px;
+    position: relative;
+    top: -85px;
+    left: 64px;
+    border-radius: 40px;
+    background: #E64A19;
+    border-bottom: 60px solid #4E3025;
+    animation: 600ms 0s;
+  }
+
+  .leg-1 {
+    position: relative;
+    background: white;
+    height: 70px;
+    width: 40px;
+    right: 20px;
+    margin-left: 20px;
+    border-radius: 10px;
+    border-bottom: 70px solid #4E3025;
+    animation: 600ms ease-in-out 0s;
+  }
+
+  @keyframes anim-leg-1 {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      right: 30px;
+      transform: rotate(10deg);
+    }
+  }
+
+  .leg-2 {
+    position: relative;
+    background: white;
+    height: 70px;
+    width: 40px;
+    top: -140px;
+    left: 20px;
+    margin-left: 30px;
+    border-radius: 10px;
+    border-bottom: 70px solid #4E3025;
+    animation: 600ms ease-in-out 0s;
+  }
+
+  @keyframes anim-leg-2 {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      margin-left: 40px;
+      transform: rotate(-10deg);
+    }
+  }
+
+  .pant {
+    height: 140px;
+    width: 90px;
+    margin-top: 2px;
+    margin-left: 30px;
+    border-radius: 10px;
+  }
+  /*MouseOut Animation*/
+
+  @keyframes anim-out-leg-1 {
+    0% {
+      transform: rotate(10deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  @keyframes anim-out-leg-2 {
+    0% {
+      transform: rotate(-10deg);
+      margin-left: 40px;
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  @keyframes anim-hand-1 {
+    0% {
+      top: 15px;
+      right: 60px;
+    }
+    100% {
+      top: -50px;
+      right: 80px;
+      transform: rotate(150deg);
+    }
+  }
+
+  @keyframes anim-hand-2 {
+    0% {
+      top: -85px;
+      left: 59px;
+    }
+    100% {
+      top: -145px;
+      left: 85px;
+      transform: rotate(-140deg);
+    }
+  }
+
+  @keyframes anim-out-hand-1 {
+    0% {
+      top: -50px;
+      right: 80px;
+      transform: rotate(150deg);
+    }
+    100% {
+      transform: rotate(0deg);
+      top: 15px;
+      right: 65px;
+    }
+  }
+
+  @keyframes anim-out-hand-2 {
+    0% {
+      top: -145px;
+      left: 85px;
+      transform: rotate(-140deg);
+    }
+    100% {
+      top: -85px;
+      left: 64px;
+      transform: rotate(0deg);
+    }
+  }
+
+  .runner-1 {
+    bottom: 12px;
+    left: 60px;
+    position: absolute;
+    transition: transform 1s ease 0s;
+  }
+
+  .runner-1-face {
+    height: 60px;
+    width: 60px;
+    border-radius: 100%;
+    background: #DFBAA8;
+  }
+
+  .runner-1-shirt {
+    height: 110px;
+    width: 70px;
+    margin-top: 4px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background: #D4AF37;
+  }
+
+  .runner-1-hand-1 {
+    height: 30px;
+    width: 25px;
+    position: relative;
+    top: 15px;
+    right: 52px;
+    background: #D4AF37;
+    border-radius: 40px;
+    border-bottom: 60px solid #DFBAA8;
+  }
+
+  .runner-1-hand-2 {
+    height: 30px;
+    width: 25px;
+    position: relative;
+    top: -75px;
+    left: 51px;
+    border-radius: 40px;
+    background: #D4AF37;
+    border-bottom: 60px solid #DFBAA8;
+    animation: 600ms ease-in-out 0s;
+  }
+
+  @keyframes anim-runner-1-celebrate {
+    0% {
+      transform: rotate(0deg);
+    }
+    20%,
+    40% {
+      margin-left: 20px;
+    }
+    40%,
+    50% {
+      margin-left: 45px;
+    }
+    50%,
+    60% {
+      margin-left: 45px;
+    }
+    60%,
+    70% {
+      margin-left: 40px;
+    }
+    100% {
+      transform: rotate(-170deg);
+      margin-top: -80px;
+      margin-left: 10px;
+    }
+  }
+
+  @keyframes runner-1-normal {
+    0% {
+      transform: rotate(-170deg);
+      margin-top: -80px;
+      margin-left: 10px;
+    }
+    20%,
+    40% {
+      margin-left: 40px;
+    }
+    40%,
+    50% {
+      margin-left: 45px;
+    }
+    50%,
+    60% {
+      margin-left: 45px;
+    }
+    60%,
+    70% {
+      margin-left: 20px;
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  .runner-1-leg-1 {
+    position: relative;
+    background: #0C145C;
+    height: 60px;
+    width: 30px;
+    top: 2px;
+    right: 20px;
+    margin-left: 20px;
+    border-radius: 10px;
+    border-bottom: 70px solid #DFBAA8;
+    animation: 600ms ease-in-out 0s;
+  }
+
+  @keyframes anim-runner-1-leg-1 {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(10deg);
+      right: 30px;
+    }
+  }
+
+  .runner-1-leg-2 {
+    position: relative;
+    background: #0C145C;
+    height: 60px;
+    width: 30px;
+    top: -128px;
+    left: 10px;
+    margin-left: 30px;
+    border-radius: 10px;
+    border-bottom: 70px solid #DFBAA8;
+    animation: 600ms ease-in-out 0s;
+  }
+
+  @keyframes anim-runner-1-leg-2 {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(-10deg);
+      left: 20px;
+    }
+  }
+
+  @keyframes anim-out-runner-1-leg-1 {
+    from {
+      transform: rotate(10deg);
+      right: 30px;
+    }
+    to {
+      transform: rotate(0deg);
+    }
+  }
+
+  @keyframes anim-out-runner-1-leg-2 {
+    from {
+      transform: rotate(-10deg);
+      left: 20px;
+    }
+    to {
+      transform: rotate(0deg);
+    }
+  }
+
+  .runner-2 {
+    height: 400px;
+    top: -441px;
+    position: relative;
+    transition: 600ms ease-in-out 0s;
+  }
+
+  .runner-2-face {
+    height: 80px;
+    width: 80px;
+    border-radius: 100%;
+    background: #B98865;
+  }
+
+  .runner-2-shirt {
+    height: 150px;
+    width: 100px;
+    border-radius: 10px;
+    background: white;
+    margin-top: 3px;
+    background: crimson;
+  }
+
+  .runner-2-pant {
+    margin-top: 2px;
+  }
+
+  .runner-2-hand-1 {
+    position: relative;
+    top: 20px;
+    right: 73px;
+    height: 50px;
+    width: 35px;
+    border-radius: 40px;
+    background: crimson;
+    border-bottom: 70px solid #B98865;
+    animation: 600ms ease-in-out 0s;
+  }
+
+  @keyframes runner-2-hand-celebrate {
+    0% {
+      transform: rotate(0deg);
+    }
+    20%,
+    40% {
+      right: 80px;
+    }
+    40%,
+    50% {
+      right: 85px;
+    }
+    50%,
+    60% {
+      right: 85px;
+    }
+    60%,
+    70% {
+      right: 80px;
+    }
+    100% {
+      transform: rotate(170deg);
+      top: -80px;
+      right: 78px;
+    }
+  }
+
+  @keyframes runner-2-normal {
+    0% {
+      transform: rotate(170deg);
+      top: -80px;
+      right: 78px;
+    }
+    20%,
+    40% {
+      right: 80px;
+    }
+    40%,
+    50% {
+      right: 85px;
+    }
+    50%,
+    60% {
+      right: 85px;
+    }
+    60%,
+    70% {
+      right: 80px;
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  .runner-2-hand-2 {
+    position: relative;
+    top: -100px;
+    left: 71px;
+    height: 50px;
+    width: 33px;
+    border-bottom: 70px solid #B98865;
+    border-radius: 40px;
+    background: crimson;
+  }
+
+  .runner-2-leg-1 {
+    height: 75px;
+    width: 40px;
+    background: black;
+    border-radius: 10px;
+    position: relative;
+    right: 30px;
+    animation: 600ms ease-in-out 0s;
+    border-bottom: 75px solid #B98865;
+  }
+
+  @keyframes runner-2-leg-1 {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(10deg);
+      right: 35px;
+    }
+  }
+
+  @keyframes runner-2-leg-1-normal {
+    from {
+      transform: rotate(10deg);
+      right: 35px;
+    }
+    to {
+      transform: rotate(0deg);
+    }
+  }
+
+  .runner-2-leg-2 {
+    position: relative;
+    top: -150px;
+    left: 30px;
+    height: 75px;
+    width: 40px;
+    background: black;
+    border-radius: 10px;
+    border-bottom: 75px solid #B98865;
+    animation: 600ms ease-in-out 0s;
+  }
+
+  @keyframes runner-2-leg-2 {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(-10deg);
+      left: 35px;
+    }
+  }
+
+  @keyframes runner-2-leg-2-normal {
+    from {
+      transform: rotate(-10deg);
+      left: 35px;
+    }
+    to {
+      transform: rotate(0deg);
+    }
+  }
+
+  .number {
+    color: white;
+    font-size: 21px;
+    position: relative;
+    top: -15px;
+  }
+
+  .medal-1 {
+    margin-left: 45px;
+    top: -0.7px;
+    position: relative;
+  }
+
+  .medal-2 {
+    margin-left: 5px;
+  }
+
+  .medal-3 {
+    margin-left: 20px;
+  }
+
+  .gold-medal {
+    background: gold;
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+    position: absolute;
+    margin-top: 55px;
+    margin-left: 12px;
+    z-index: 10;
+    border: 2px solid beige;
+  }
+
+  .silver-medal {
+    background: #A8A8A8;
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+    position: absolute;
+    margin-top: 54px;
+    margin-left: 15px;
+    z-index: 10;
+    border: 2px solid beige;
+  }
+
+  .bronze-medal {
+    background: #965A38;
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+    position: absolute;
+    margin-top: 55px;
+    margin-left: 13px;
+    z-index: 10;
+    border: 2px solid beige;
+  }
+
+  .ribbon-1 {
+    height: 60px;
+    width: 5px;
+    background: white;
+    transform: rotate(-17deg);
+    position: absolute;
+    margin-left: 10px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+  }
+
+  .ribbon-2 {
+    position: absolute;
+    height: 60px;
+    width: 5px;
+    background: purple;
+    margin-left: 15px;
+    transform: rotate(-17deg);
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+  }
+
+  .ribbon-3 {
+    position: absolute;
+    height: 60px;
+    width: 5px;
+    background: white;
+    margin-left: 45px;
+    transform: rotate(17deg);
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+  }
+
+  .ribbon-4 {
+    position: absolute;
+    height: 60px;
+    width: 5px;
+    background: purple;
+    margin-left: 40px;
+    transform: rotate(17deg);
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+  }
+
+.winner-jerseyno , .runner1-jerseyno , .runner2-jerseyno{
+  font-family: Impact;
+  position: relative;
+}
+
+.winner-jerseyno {
+  font-size: 25px;
+  color: black;
+  margin-left: 15px;
+  top: 30px;
+}
+
+.runner1-jerseyno{
+  font-size: 20px;
+  color: beige;
+  margin-left: 10px;
+  top: 20px;
+}
+
+.runner2-jerseyno{
+  font-size: 25px;
+  color: white;
+  margin-left: 10px;
+  top: 33px;
+}

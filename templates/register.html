@@ -1,0 +1,86 @@
+{% extends 'c2.html' %}
+{% block content %}
+<div class="{% if message.tags %}alert alert-{{ message.tags }}{% endif %}" role="alert">
+    <script>
+        // Check if the message variable is defined
+        {% if message %}
+            // Escape the message to prevent XSS attacks
+            var escapedMessage = "{{ message|escapejs }}";
+            alert(escapedMessage);
+        {% endif %}
+    </script>
+</div>
+
+<div id="popup2" class="popup">
+    <span class="close1" onclick="closePopup2()">&times;</span>
+    <div class="overlay1"></div>
+    <br> 
+    {% for message in messages %}
+    <h5>{{ message }}</h5>
+    {% endfor %}
+
+    <form method="post" action="{% url 'minidjango:register' %}">
+        {% csrf_token %}
+        <div style="height: 50px; margin: 0; padding: 0;">
+            <h1 style="text-align: center; margin: 0; padding: 0;">Register</h1>
+        </div>
+        <hr>
+        <p style="color:black">Username:</p>
+        <input type="text" name="username" id="usernameregister">
+
+        <p style="color:black">Email:</p>
+        <input type="email" name="email">
+
+        <p style="color:black">Password:</p>
+        <div class="password-container">
+            <div class="eye-container">
+                <span class="eye toggle-password" onclick="togglePasswordVisibility('password')">&#x1F441;</span>
+            </div>
+            <input type="password" name="password" id="password" class="password-input">
+        </div>
+
+        <br>
+
+        <p style="color:black">Confirm Password:</p>
+        <div class="password-container">
+            <input type="password" name="password2" id="password2" class="password-input">
+            <div class="eye-container">
+                <span class="eye toggle-password" onclick="togglePasswordVisibility('password2')">&#x1F441;</span>
+            </div>
+        </div>
+        <br>
+        <br>
+        <input type="submit">
+    </form>
+</div>
+<script>
+    function openPopup2() {
+        var popup = document.getElementById("popup2");
+        popup.style.display = "block";
+        // Add blur effect to background elements
+        var elementsToBlur = document.querySelectorAll("body > *:not(#popup2)");
+        elementsToBlur.forEach(function(element) {
+            element.classList.add("blur-background");
+        });
+    }
+    
+    // Function to close the popup
+    function closePopup2() {
+        var popup = document.getElementById("popup2");
+        popup.style.display = "none";
+        // Remove blur effect from background elements
+        var elementsToBlur = document.querySelectorAll("body > *:not(#popup2)");
+        elementsToBlur.forEach(function(element) {
+            element.classList.remove("blur-background");
+        });
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        // Your JavaScript code here
+        // Ensure that 'popup2' element exists before accessing its style
+        var popup2 = document.getElementById('popup2');
+        if (popup2) {
+            popup2.style.display = 'block';
+        }
+    });
+</script>
+{% endblock %}

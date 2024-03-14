@@ -1,0 +1,56 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Add necessary meta tags, title, and link to CSS -->
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divide Page</title>
+    <link rel="stylesheet" href="{% static 'stylemini.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+63Rm9bq25thIsI6pzxyO5gI3aO5M0q5gqtn4Z9vZ7x0xjB" crossorigin="anonymous">
+</head>
+<body style="background-image: url('{% static 'pro1\static\blueback.jpeg' %}');background-attatchement:fixed; background-size: cover; background-repeat: no-repeat;">
+    <div class="navbar">
+        <img src="{% static 'profile-user.png' %}" id="img1" alt="profile" onclick="openPopup()">
+        <img src="{% static 'settings (1).png' %}" id="img2" alt="settings">
+    </div>
+    <div class="fullcontainer">
+        <div class="left-half">
+            <!-- Your content for the left half goes here -->
+            <a href="{% url 'minidjango:c2' %}"><img src="{% static 'back.png' %}" style="position: realtive; height: 35px; width: 35px; cursor: pointer;" alt="Back"></a>
+            <div id="container"></div>
+            <div class='overlay'>
+                <button id="Button" style="display: none;position:absolute;left:45%;top:350px;" onclick="start()" >Click</button>
+            </div>
+            <div id="randomNumber" style="position:absolute;left:46.5%;top:450px;display: none;background-color:orange;font-weight:bold;font-size:20px;border-radius:50%;border:2px solid black;height:50px;width:50px;line-height:50px;text-align:center;"></div>
+        </div>
+        <div class="right-half">
+            <!-- Your content for the right half goes here -->
+            <button  id="startButton" style="position:absolute;left:45%;top:250px;" onclick="startGeneratingRandomNumbers()" >Start</button>
+            <div id="tickets-container"></div>
+            <div id="output"></div>
+        </div>
+    </div>
+    <div id="popup" class="popup">
+        <span class="close" onclick="closePopup()">&times;</span>
+        <div class="overlay"></div>
+        <div class="profile-info">
+            <div class="profile-img">
+                <img src="{% static 'profile-user.png' %}" alt="Profile Image">
+            </div>
+            <p style="font-size:30px" class="profile-name">Name</p>
+        </div>
+        <hr>
+        <p style="font-size:30px">High Score</p>
+        <div style="display: flex;justify-content: space-around;">
+            <p style="font-size:30px">Wins <img src="{% static 'thumbs-up-hand-symbol.png' %}" id='winloss'> </p>
+            <p style="font-size:30px">Loss <img src="{% static 'thumbs-down-silhouette.png' %}" id='winloss'> </p>
+        </div>
+        <p style="font-size:30px">Log Out <img style="width:30px;height:30px;" src='{% static "power.png" %}'  > </p>
+        <button style="display:block;background-color:white;border-radius:25px;min-height:30px;max-width:180px;color:black;top:50%;text-align:center;font-size:25px;float:right;">Edit Profile</button>
+    </div>
+    <script src="{% static 'script.js' %}"></script>
+</body>
+</html>

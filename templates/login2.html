@@ -1,0 +1,64 @@
+{% extends 'c2.html' %}
+{% block content %}
+{% for message in messages %}
+<h5>{{ message }}</h5>
+{% endfor %}
+<div id="popup3" class="popup">
+    <span class="close2" onclick="closePopup3()">&times;</span>
+    <div class="overlay2"></div>
+    <h1>Login</h1>
+    {% for message in messages %}
+    <h5>{{ message }}</h5>
+    {% endfor %}
+    <form method="POST" action="{% url 'minidjango:user_login' %}" >
+        {% csrf_token %}
+
+        <p>Username:</p>
+        <input type="text" name="username" id="usernamelogin">
+        <p>Password:</p>
+        <input type="password" name="password">
+        <br>
+        <input type="submit"/>
+    </form>
+</div>
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const action = urlParams.get('action');
+
+    // Call the appropriate function based on the query parameter
+    
+    var inputUsername = document.getElementById('usernamelogin');
+    
+    // Get the span element
+    var guestName = document.getElementById('profile-name');
+
+    // Set the initial value of the span element to the value of the input element
+    guestName.innerText = inputUsername.value;
+
+    function redirectToPage3() {
+        // Get the value from the input element
+        var guestName = inputUsername.value.trim();
+
+        if (guestName === '') {
+            guestName = 'Guest' + (Math.floor(Math.random() * 9999) + 1);
+        }
+
+
+        if (guestName.trim() !== '') {
+            // Redirect to the desired page
+            window.location.href = "{% url 'minidjango:half1' %}";
+            alert('Your username is ' + guestName);
+
+        } else {
+            alert('Please enter your name before continuing.');
+        }
+        
+    }
+    if (window.opener && guestName.trim() !== '') {
+        window.opener.setGuestName(guestName);
+    }
+    if (action === 'redirectToPage3') {
+        redirectToPage3();
+    } 
+</script>
+{% endblock %}

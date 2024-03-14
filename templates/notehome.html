@@ -1,0 +1,48 @@
+{% load static %}
+{% comment %} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Title Here</title>
+    <link rel="stylesheet" href="{% static 'solo.css' %}">
+    <!-- React -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <!-- React DOM -->
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <!-- Babel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    <!-- Include any additional meta tags, stylesheets, or scripts here -->
+</head>
+<body>
+    <div id="root">
+    </div>
+    <script src="{% static 'index.js' %}" type="text/babel"></script>
+</body>
+</html> {% endcomment %}
+<!-- Your Django template (notehome.html) -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Title Here</title>
+    <link rel="stylesheet" href="{% static 'solo.css' %}">
+</head>
+<body>
+    <div id="root"></div>
+
+    <!-- Load React and React DOM -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+    <!-- Load Babel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+    <!-- Your React file -->
+    <script src="{% static 'index.js' %}" type="module"></script>
+</body>
+</html>

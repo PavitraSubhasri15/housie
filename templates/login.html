@@ -1,0 +1,78 @@
+{% extends 'c2.html' %}
+{% block content %}
+<div class="{% if message.tags %}alert alert-{{ message.tags }}{% endif %}" role="alert">
+    <script>
+        // Check if the message variable is defined
+        {% if message %}
+            // Escape the message to prevent XSS attacks
+            var escapedMessage = "{{ message|escapejs }}";
+            alert(escapedMessage);
+        {% endif %}
+    </script>
+</div>
+
+<div id="popup3" class="popup">
+    <span class="close" onclick="closePopup3()">&times;</span>
+    <div class="overlay2"></div>
+    <h1>Login</h1>
+    {% for message in messages %}
+    <h5>{{ message }}</h5>
+    {% endfor %}
+    <form method="POST" action="{% url 'minidjango:user_login' %}" >
+        {% csrf_token %}
+
+        <p>Username:</p>
+        <input type="text" name="username" id="usernamelogin">
+        <p>Password:</p>
+        <input type="password" name="password">
+        <br>
+        <input type="submit" value="Login"/> <!-- Added value attribute -->
+    </form>
+</div>
+<script>
+    function openPopup3() {
+        var popup = document.getElementById("popup3");
+        popup.style.display = "block";
+        // Add blur effect to background elements
+        var elementsToBlur = document.querySelectorAll("body > *:not(#popup3)");
+        elementsToBlur.forEach(function(element) {
+            element.classList.add("blur-background");
+        });
+    }
+    
+    // Function to close the popup
+    function closePopup3() {
+        var popup = document.getElementById("popup3");
+        popup.style.display = "none";
+        // Remove blur effect from background elements
+        var elementsToBlur = document.querySelectorAll("body > *:not(#popup3)");
+        elementsToBlur.forEach(function(element) {
+            element.classList.remove("blur-background");
+        });
+    }
+    const urlParams = new URLSearchParams(window.location.search);
+    const action = urlParams.get('action');
+    const inputUsername = document.getElementById('usernamelogin');
+
+    function redirectToPage3() {
+        let guestName = inputUsername.value.trim();
+
+        // If no username is provided, generate a random guest name
+        if (guestName === '') {
+            guestName = 'Guest' + (Math.floor(Math.random() * 9999) + 1);
+        }
+
+        // Update the profile name
+        const profileName = document.getElementById('profile-name');
+        profileName.textContent = guestName;
+
+        // Redirect to the desired page
+        window.location.href = "{% url 'minidjango:half1' %}";
+    }
+
+    // Call redirectToPage3 if action is set to redirectToPage3
+    if (action === 'redirectToPage3') {
+        redirectToPage3();
+    } 
+</script>
+{% endblock %}
